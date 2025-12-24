@@ -1,0 +1,23 @@
+# main.py
+# A simple starter code for Midnight/Cardano/ZKP experiments
+
+def hello_midnight():
+    print("Hello Midnight on Cardano! 🚀")
+
+def simple_zkp_demo(secret: int, guess: int) -> bool:
+    """
+    A simple "Zero-Knowledge Proof" style check:
+    Returns True if guess matches secret without revealing the secret.
+    """
+    return secret == guess
+
+if __name__ == "__main__":
+    hello_midnight()
+
+    secret_number = 42
+    guess_number = 42  # Try changing this to see False
+
+    if simple_zkp_demo(secret_number, guess_number):
+        print("ZKP check passed! ✅")
+    else:
+        print("ZKP check failed! ❌")
