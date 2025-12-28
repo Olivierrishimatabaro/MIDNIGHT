@@ -1,0 +1,50 @@
+/**
+ * Midnight Community Reflection Engine
+ * ------------------------------------
+ * This module turns anonymous community reflections
+ * into clear, actionable insights — without exposing identities.
+ */
+
+type Reflection = {
+  topic: string;
+  sentiment: "positive" | "neutral" | "concern";
+};
+
+type Insight = {
+  topic: string;
+  priority: number;
+  recommendation: string;
+};
+
+export function generateInsights(reflections: Reflection[]): Insight[] {
+  const scoreMap = {
+    positive: 1,
+    neutral: 0,
+    concern: -1,
+  };
+
+  const grouped: Record<string, number> = {};
+
+  for (const reflection of reflections) {
+    grouped[reflection.topic] =
+      (grouped[reflection.topic] || 0) + scoreMap[reflection.sentiment];
+  }
+
+  return Object.entries(grouped)
+    .map(([topic, score]) => ({
+      topic,
+      priority: Math.abs(score),
+      recommendation:
+        score < 0
+          ? "Needs discussion and improvement"
+          : "Ready to scale and support",
+    }))
+    .sort((a, b) => b.priority - a.priority);
+}
+
+/**
+ * Philosophy:
+ * - No personal data
+ * - Only shared signals
+ * - Privacy first, progress always
+ */
