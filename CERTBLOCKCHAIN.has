@@ -1,0 +1,29 @@
+// Définition de la certification
+const blockchainFundamentals = {
+  title: "Blockchain Fundamentals",
+  issuer: "Midnight Academy",
+  topics: [
+    "Decentralization",
+    "Consensus Mechanisms (PoW vs PoS)",
+    "Immutability",
+    "Merkle Trees",
+    "Smart Contracts",
+    "Evolution from Bitcoin to modern programmable blockchains"
+  ],
+  description: "Completed an intensive program covering core blockchain concepts, " +
+               "understanding how decentralized systems operate, and gaining foundational knowledge for building secure and transparent applications."
+};
+
+// Fonction pour afficher joliment la certification
+function displayCertification(cert) {
+  console.log("===================================");
+  console.log(`🎓 Certification: ${cert.title}`);
+  console.log(`🏫 Issuer: ${cert.issuer}`);
+  console.log("📚 Topics Covered:");
+  cert.topics.forEach(topic => console.log(` - ${topic}`));
+  console.log(`📝 Description: ${cert.description}`);
+  console.log("===================================");
+}
+
+// Exécution
+displayCertification(blockchainFundamentals);
